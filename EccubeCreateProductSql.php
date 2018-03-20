@@ -347,7 +347,7 @@ class EccubeCreateProductSql
      */
     public function writeProductClassSql()
     {
-        $sql = 'SELECT pc.*,p.deliv_date_id,p.eh_admin_no FROM dtb_products_class pc INNER JOIN dtb_products p ON pc.product_id = p.product_id ORDER BY pc.product_class_id ASC;';
+        $sql = 'SELECT pc.*,p.deliv_date_id FROM dtb_products_class pc INNER JOIN dtb_products p ON pc.product_id = p.product_id ORDER BY pc.product_class_id ASC;';
 
         $rows = Common::fetch($this->conn, $sql);
 
