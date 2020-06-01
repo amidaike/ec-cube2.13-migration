@@ -21,7 +21,7 @@ class EccubeCreateProductSql
      */
     public function writeCategorySql()
     {
-        $sql = 'SELECT * FROM dtb_category ORDER BY level, category_id, parent_category_id, rank;';
+        $sql = 'SELECT * FROM dtb_category ORDER BY level, category_id, parent_category_id, `rank`;';
 
         $rows = Common::fetch($this->conn, $sql);
 
@@ -32,7 +32,7 @@ class EccubeCreateProductSql
         $lastItem = end($rows);
 
         // insert文
-        $sql = 'INSERT INTO dtb_category (category_id, category_name, parent_category_id, level, rank, creator_id, create_date, update_date, del_flg) VALUES'.PHP_EOL;
+        $sql = 'INSERT INTO dtb_category (category_id, category_name, parent_category_id, level, `rank`, creator_id, create_date, update_date, del_flg) VALUES'.PHP_EOL;
         $this->file->fwrite($sql);
 
         foreach ($rows as $item) {
@@ -67,7 +67,7 @@ class EccubeCreateProductSql
      */
     public function writeProductCategorySql()
     {
-        $sql = 'SELECT * FROM dtb_product_categories pc INNER JOIN dtb_products p ON pc.product_id = p.product_id INNER JOIN dtb_category c ON pc.category_id = c.category_id ORDER BY pc.product_id, pc.rank;';
+        $sql = 'SELECT * FROM dtb_product_categories pc INNER JOIN dtb_products p ON pc.product_id = p.product_id INNER JOIN dtb_category c ON pc.category_id = c.category_id ORDER BY pc.product_id, pc.`rank`;';
 
         $rows = Common::fetch($this->conn, $sql);
 
@@ -78,7 +78,7 @@ class EccubeCreateProductSql
         $lastItem = end($rows);
 
         // insert文
-        $sql = 'INSERT INTO dtb_product_category (product_id, category_id, rank) VALUES'.PHP_EOL;
+        $sql = 'INSERT INTO dtb_product_category (product_id, category_id, `rank`) VALUES'.PHP_EOL;
         $this->file->fwrite($sql);
 
         foreach ($rows as $item) {
@@ -116,7 +116,7 @@ class EccubeCreateProductSql
         $lastItem = end($rows);
 
         // insert文
-        $sql = 'INSERT INTO dtb_class_name (class_name_id, name, rank, creator_id, create_date, update_date, del_flg) VALUES'.PHP_EOL;
+        $sql = 'INSERT INTO dtb_class_name (class_name_id, name, `rank`, creator_id, create_date, update_date, del_flg) VALUES'.PHP_EOL;
         $this->file->fwrite(PHP_EOL);
         $this->file->fwrite($sql);
 
@@ -160,7 +160,7 @@ class EccubeCreateProductSql
         $lastItem = end($rows);
 
         // insert文
-        $sql = 'INSERT INTO dtb_class_category (class_category_id, name, class_name_id, rank, creator_id, create_date, update_date, del_flg) VALUES'.PHP_EOL;
+        $sql = 'INSERT INTO dtb_class_category (class_category_id, name, class_name_id, `rank`, creator_id, create_date, update_date, del_flg) VALUES'.PHP_EOL;
         $this->file->fwrite(PHP_EOL);
         $this->file->fwrite($sql);
 
@@ -205,7 +205,7 @@ class EccubeCreateProductSql
         $lastItem = end($rows);
 
         // insert文
-        $sql = 'INSERT INTO dtb_maker (maker_id, name,rank, creator_id, create_date, update_date, del_flg) VALUES'.PHP_EOL;
+        $sql = 'INSERT INTO dtb_maker (maker_id, name, `rank`, creator_id, create_date, update_date, del_flg) VALUES'.PHP_EOL;
         $this->file->fwrite($sql);
 
         foreach ($rows as $item) {
@@ -330,7 +330,7 @@ class EccubeCreateProductSql
 
 
         if (!empty($imageValues)) {
-            $importImageSql = 'INSERT INTO dtb_product_image (product_image_id, product_id, creator_id, file_name, rank, create_date) VALUES'.PHP_EOL;
+            $importImageSql = 'INSERT INTO dtb_product_image (product_image_id, product_id, creator_id, file_name, `rank`, create_date) VALUES'.PHP_EOL;
             $importImageSql .= implode(','.PHP_EOL, $imageValues).";";
             $this->file->fwrite(PHP_EOL);
             $this->file->fwrite($importImageSql);
