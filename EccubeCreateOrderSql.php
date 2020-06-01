@@ -382,7 +382,7 @@ class EccubeCreateOrderSql
                     .'fee_id, shipping_name01, shipping_name02, shipping_kana01, shipping_kana02, shipping_company_name,'
                     .'shipping_tel01, shipping_tel02, shipping_tel03, shipping_fax01, shipping_fax02, shipping_fax03, shipping_zip01, shipping_zip02,'
                     .'shipping_zipcode, shipping_addr01, shipping_addr02, shipping_delivery_name, shipping_delivery_time, shipping_delivery_date, shipping_delivery_fee, shipping_commit_date,'
-                    .'rank, create_date, update_date, del_flg) VALUES '.PHP_EOL;
+                    .'`rank`, create_date, update_date, del_flg) VALUES '.PHP_EOL;
                 $importShippingSql .= implode(','.PHP_EOL, $shippingValues).";";
 
                 $file->fwrite(PHP_EOL);
